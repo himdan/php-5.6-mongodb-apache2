@@ -1,0 +1,11 @@
+version: "3"
+services:
+  php:
+    image: php56_legacy_full
+    working_dir: /var/www/project
+    volumes:
+      - "./app:/var/www/project"
+      - "./docker/php/context/apache2/default.conf:/etc/apache2/sites-available/000-default.conf"
+    command: 'apachectl -D FOREGROUND'
+    ports:
+      - "8080:80"
